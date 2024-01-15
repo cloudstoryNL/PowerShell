@@ -51,7 +51,8 @@ Foreach($user in $userCollection)
 
     if ($user.UserPrincipalName -like "*#EXT#*")
 	{
-		$userType = "External Account Supplier - $UPN"
+        $companyName = $user.UserPrincipalName.Substring($user.UserPrincipalName.LastIndexOf("_") + 1, $user.UserPrincipalName.IndexOf("#") - $user.UserPrincipalName.LastIndexOf("_") -1)
+		$userType = "External Account Supplier - $companyName"
 	}
 
     $licenseObject = New-Object -TypeName PSObject
